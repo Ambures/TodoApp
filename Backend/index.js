@@ -3,6 +3,9 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
+const dotenv = require ("dotenv");
+dotenv.config();
+const CONNECTION_STRING = process.env.CONNECTOIN_STRING;
 
 // middleware
 app.use(express.json());
@@ -85,7 +88,7 @@ app.listen(2000, () => {
 });
 
 // connect to database
-const connectionString = "mongodb+srv://amburesmcgil:intake25A@cluster0.xj3svde.mongodb.net/todoDB";
+const connectionString = CONNECTION_STRING;
 
 mongoose.connect(connectionString)
     .then(() => {console.log("Connection successful!")})
